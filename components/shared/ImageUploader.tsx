@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Upload, X } from 'lucide-react';
-import { validateImageFile } from '@/lib/supabase/storage';
+import { validateImageFile } from '@/lib/validation';
 
 type ImageUploaderProps = {
   currentImageUrl?: string | null;

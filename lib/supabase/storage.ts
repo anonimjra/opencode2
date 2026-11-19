@@ -1,29 +1,12 @@
 import { createClient } from '@/lib/supabase/server';
 import { slugify } from '@/lib/utils';
-import { ALLOWED_IMAGE_TYPES, MAX_UPLOAD_SIZE } from '@/lib/constants';
+import { validateImageFile } from '@/lib/validation';
 import type { ActionResponse } from '@/types';
 
 export const BUCKET_NAME = 'public-media';
-export const MAX_FILE_SIZE = MAX_UPLOAD_SIZE;
-export const ALLOWED_MIME_TYPES = ALLOWED_IMAGE_TYPES;
-
 export type UploadFolder = 'products' | 'gallery' | 'brand';
 
-export function validateImageFile(file: File): { valid: boolean; error?: string } {
-  if (!ALLOWED_MIME_TYPES.includes(file.type)) {
-    return {
-      valid: false,
-      error: 'Format file harus JPG, PNG, atau WebP.',
-    };
-  }
-  if (file.size > MAX_FILE_SIZE) {
-    return {
-      valid: false,
-      error: 'Ukuran file maksimal 2MB.',
-    };
-  }
-  return { valid: true };
-}
+export { validateImageFile };
 
 export async function uploadMediaFile(
   file: File,
