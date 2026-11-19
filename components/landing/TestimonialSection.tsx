@@ -68,6 +68,7 @@ export function TestimonialSection({ testimonials }: TestimonialSectionProps) {
                     alt={testimonial.customer_name}
                     width={44}
                     height={44}
+                    sizes="44px"
                     className="h-11 w-11 rounded-full object-cover"
                   />
                 ) : (

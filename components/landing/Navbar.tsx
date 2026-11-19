@@ -30,6 +30,7 @@ export function Navbar({ brandName, logoUrl, whatsappNumber }: NavbarProps) {
               alt={`Logo ${brandName}`}
               width={40}
               height={40}
+              sizes="40px"
               className="h-10 w-10 rounded-full object-cover"
             />
           ) : (
