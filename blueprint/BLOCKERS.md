@@ -16,4 +16,12 @@ Format pencatatan blocker:
 
 ---
 
-*(Belum ada blocker yang tercatat)*
+## [GLOBAL] - Supabase Live Belum Dikonfigurasi
+- **Waktu Terjadi:** 2026-11-19
+- **Deskripsi Masalah:** Environment `.env.local` hanya berisi placeholder (`https://your-project.supabase.co`). Tidak ada proyek Supabase live untuk menjalankan migrasi, seed, dan menguji alur data end-to-end (login, CRUD, upload, export) secara nyata.
+- **Tindakan yang Dicoba:**
+  1. Membuat seluruh skrip migrasi & seed agar siap dieksekusi pada proyek Supabase pengguna.
+  2. Menambahkan fallback data pada landing page (`FALLBACK_SITE_SETTINGS`) agar halaman tetap ter-render tanpa error 500 saat database kosong/tidak tersedia.
+  3. Memverifikasi kompilasi (`tsc --noEmit`, `next build`, `npm run lint`) — seluruhnya lolos tanpa perlu koneksi database.
+- **Keputusan Mitigasi:** Build & type-check diverifikasi statis; seluruh query dibungkus penanganan error/fallback. Pengujian data live dilakukan saat kredensial Supabase tersedia.
+- **Dampak ke Task Lain:** Tidak menghalangi penyelesaian kode; verifikasi runtime database bergantung pada konfigurasi kredensial oleh pengguna (didokumentasikan di `README.md`).
