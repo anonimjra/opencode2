@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { ProductListTable } from '@/components/admin/ProductListTable';
+import { ExportExcelButton } from '@/components/admin/ExportExcelButton';
 import type { Product, Category } from '@/types/database';
 
 export const dynamic = 'force-dynamic';
@@ -19,6 +20,12 @@ export default async function AdminProductsPage() {
     <ProductListTable
       products={(productsRes.data as Product[] | null) ?? []}
       categories={(categoriesRes.data as Category[] | null) ?? []}
+      exportSlot={
+        <ExportExcelButton
+          endpoint="/api/admin/export/products"
+          label="Export Produk (.xlsx)"
+        />
+      }
     />
   );
 }
